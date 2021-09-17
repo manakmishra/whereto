@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>where.to</title>
+  <style>
+    input{display:block; margin-bottom:10px;}
+  </style>
+</head>
+
+<body>
+  <h1>Where.to</h1>
+  <h2>Shorten those boring long URLs!</h2>
+
+  <form action="/shorten/" method="post"> {% csrf_token %}
+    <label for="long_url">Enter URL that you want to shorten:</label>
+    <input id="long_url" type="text" />
+    
+    <input type="submit" value="Shorten!"/>
+  </form>
+</body>
+</html>
