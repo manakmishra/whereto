@@ -1,23 +1,28 @@
+{% load static %}
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta charset="utf-8" />
   <title>where.to</title>
-  <style>
-    input{display:block; margin-bottom:10px;}
-  </style>
+  <link rel="stylesheet" href="{% static 'css/main.css' %}" type="text/css" />
 </head>
 
 <body>
-  <h1>Where.to</h1>
-  <h2>Shorten those boring long URLs!</h2>
+  <div class="navbar">
+    <h1>where.to</h1>
+  </div>
 
-  <form action="/shorten" method="post"> 
-    {% csrf_token %}
-    <label for="long_url">Enter URL that you want to shorten:</label>
-    <input id="long_url" name="long_url" type="url"/>
-    
-    <input type="submit" value="Shorten!"/>
-  </form>
+  <div class="hero">
+    <h2>Shorten those boring long URLs!</h2>
+
+    <form action="/shorten" method="post" class="form"> 
+      {% csrf_token %}
+      <label for="long_url">Enter URL that you want to shorten:</label>
+      <input id="long_url" name="long_url" type="url"/>
+      
+      <input type="submit" value="Shorten!"/>
+    </form>
+  </div>
 </body>
 </html>
