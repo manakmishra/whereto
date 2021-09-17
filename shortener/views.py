@@ -12,7 +12,9 @@ from decouple import config
 client = MongoClient(config('MONGO'))
 db = client[config('DATABASE')]
 coll = db[config('COLLECTION_NAME')]
-#tokendb = db[config('TOKENDB')]
+tokendb = db[config('TOKENDB')]
+
+domain = config('DOMAIN_NAME')
 
 def index(request):
     request.COOKIES['key'] = str(uuid.uuid1())
@@ -23,9 +25,9 @@ def index(request):
 def shorten(request):    
     if request.method == 'POST':
         user = request.COOKIES.get('key')
-        url = request.POST['link']
-        if url.find('<name of your domain>') != -1:
-            return render(request, 'home.html', {'status': 'Funny'})
+        url = request.POST['long_url']
+        if url.find(domain) != -1:
+            return render(request, 'home.html')
         http = urllib3.PoolManager()
         valid = False
         if url.startswith("http"):            
@@ -42,10 +44,23 @@ def shorten(request):
             
         if valid == True:
             new_url = str(uuid.uuid4())[:5]
-            surl = "<name of your domain>"+new_url
+            surl = domain+new_url
             sch = {'uid' : user, 'link' : url, 'new' : surl}
             coll.insert_one(sch)
-            return render(request, 'final.html', {'user':user, 'url': url, 'new':surl})           #dynamic data onto your HTML template
+            return render(request, 'shorten.html', {'url':surl})
         else:
-            return render(request, 'home.html', {'status': False})
+            return render(request, 'home.html')
     return redirect('/')
+
+def openurl(request, uid):  
+    if uid != "": 
+        details = coll.find_one({"new": domain+uid})
+        details = json.loads(details)
+        if details:
+            full_url = details['link']
+            if full_url.startswith("http"):
+                return redirect(full_url)
+            else:        
+                return redirect("http://"+full_url)
+        else:
+            return HttpResponse(404)
