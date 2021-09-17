@@ -12,9 +12,10 @@
   <h1>Where.to</h1>
   <h2>Shorten those boring long URLs!</h2>
 
-  <form action="/shorten/" method="post"> {% csrf_token %}
+  <form action="/shorten" method="post"> 
+    {% csrf_token %}
     <label for="long_url">Enter URL that you want to shorten:</label>
-    <input id="long_url" type="text" />
+    <input id="long_url" name="long_url" type="url"/>
     
     <input type="submit" value="Shorten!"/>
   </form>
