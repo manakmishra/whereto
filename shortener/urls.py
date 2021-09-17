@@ -6,4 +6,5 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('',views.index, name="home"),
     path('shorten',views.shorten, name="shorten"),
+    path('<str:uid>', views.openurl, name="open"),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

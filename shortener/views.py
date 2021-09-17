@@ -14,7 +14,7 @@ db = client[config('DATABASE')]
 coll = db[config('COLLECTION_NAME')]
 tokendb = db[config('TOKENDB')]
 
-domain = 'http://where.to/'
+domain = config('DOMAIN_NAME')
 
 def index(request):
     request.COOKIES['key'] = str(uuid.uuid1())
@@ -25,7 +25,6 @@ def index(request):
 def shorten(request):    
     if request.method == 'POST':
         user = request.COOKIES.get('key')
-        print(request.POST)
         url = request.POST['long_url']
         if url.find(domain) != -1:
             return render(request, 'home.html')
@@ -52,3 +51,16 @@ def shorten(request):
         else:
             return render(request, 'home.html')
     return redirect('/')
+
+def openurl(request, uid):  
+    if uid != "": 
+        details = coll.find_one({"new": domain+uid})
+        details = json.loads(details)
+        if details:
+            full_url = details['link']
+            if full_url.startswith("http"):
+                return redirect(full_url)
+            else:        
+                return redirect("http://"+full_url)
+        else:
+            return HttpResponse(404)
