@@ -16,7 +16,9 @@ DEBUG = True
 
 DISABLE_COLLECTSTATIC=1
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'whereto-us.herokuapp.com'
+]
 
 
 # Application definition
