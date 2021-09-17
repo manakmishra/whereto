@@ -12,7 +12,6 @@ from decouple import config
 client = MongoClient(config('MONGO'))
 db = client[config('DATABASE')]
 coll = db[config('COLLECTION_NAME')]
-tokendb = db[config('TOKENDB')]
 
 domain = config('DOMAIN_NAME')
 
@@ -55,7 +54,6 @@ def shorten(request):
 def openurl(request, uid):  
     if uid != "": 
         details = coll.find_one({"new": domain+uid})
-        details = json.loads(details)
         if details:
             full_url = details['link']
             if full_url.startswith("http"):
