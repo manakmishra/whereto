@@ -34,6 +34,6 @@ session operates in a virtual environment set up by `virtualenv`.
 
 Once `pip` has finished downloading the dependencies:
 ```sh
-(env)$ python manage.py runserver
+(venv) $ python manage.py runserver
 ```
 And navigate to `http://127.0.0.1:8000/`.
