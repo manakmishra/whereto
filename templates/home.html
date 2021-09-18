@@ -19,7 +19,7 @@
     <form action="/shorten" method="post" class="form"> 
       {% csrf_token %}
       <label for="long_url">Enter URL that you want to shorten:</label>
-      <input id="long_url" name="long_url" type="url"/>
+      <input id="long_url" name="long_url" type="text"/>
       
       <input type="submit" value="Shorten!"/>
     </form>
