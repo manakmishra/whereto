@@ -61,6 +61,10 @@ body {
 	position: relative;
 }
 
+.copy-url-field {
+	position: relative;
+}
+
 .url-field {
 	display: block;
 	margin: 0;
@@ -115,10 +119,10 @@ body {
 	transition: transform 300ms, visibility 0ms, z-index 0ms;
 }
 
-.form button {
-	font-family: 'Montserrat';
+.form .submit-button {
+	font-family: FontAwesome, 'Montserrat';
 	font-size: 1.4rem;
-	font-weight: bold;
+	font-weight: 600;
 	letter-spacing: 1.1;
 	outline: 0;
 	background: #374785;
@@ -134,14 +138,37 @@ body {
 	transition: all 0.2s;
 }
 
-.form button:hover,
-.form button:focus {
+.form .submit-button:hover,
+.form .submit-button:focus {
 	background: #24305E;
 	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 	transform: translateY(-4px);
 }
 
-.form button:active {
+.form .submit-button:active {
 	transform: translateY(2px);
 	box-shadow: 0 2.5px 5px rgba(0, 0, 0, 0.2);
+}
+
+.copy-button {
+	font-family: FontAwesome;
+	font-size: 1.8rem;
+	outline: 0;
+	background: #374785;
+	height: 100%;
+	border: 0;
+	border-radius: 0 0.4rem 0.4rem 0;
+	margin: 0;
+	padding: 0.8rem 1.6rem;
+	color: #FFFFFF;
+	cursor: pointer;
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 1;
+}
+
+.form .copy-button:hover,
+.form .copy-button:focus {
+	background: #24305E;
 }
