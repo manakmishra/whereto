@@ -5,24 +5,25 @@
 <head>
   <meta charset="utf-8" />
   <title>where.to</title>
-  <link rel="stylesheet" href="{% static 'css/main.css' %}" type="text/css" />
+  <link rel="stylesheet" href="{% static 'css/main.css' %}" type="text/css">
 </head>
 
 <body>
   <div class="navbar">
-    <h1>where.to</h1>
+    <h1>where<span>.to</span></h1>
   </div>
-
-  <div class="hero">
+  <div class="content">
     <h2>Shorten those boring long URLs!</h2>
 
-    <form action="/shorten" method="post" class="form"> 
+    <form action="/shorten" method="post" class="form">
       {% csrf_token %}
-      <label for="long_url">Enter URL that you want to shorten:</label>
-      <input id="long_url" name="long_url" type="text"/>
-      
-      <input type="submit" value="Shorten!"/>
+
+      <input id="long_url" name="long_url" type="text" class="url-field" placeholder="Enter URL that you want to shorten"/>
+      <label for="long_url" class="url-label">Long URL</label>
+      <br> <br>
+      <button type="submit">Shorten!</button>
     </form>
   </div>
+  
 </body>
 </html>
