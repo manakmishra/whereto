@@ -27,12 +27,17 @@ def shorten(request):
         url = request.POST['long_url']
         if url.find(domain) != -1:
             return render(request, 'home.html')
+
         http = urllib3.PoolManager()
         valid = False
         if url.startswith("http"):            
             url = url    
         else:
             url = "http://"+url
+
+        details = coll.find_one({"link": url})
+        if details:
+            return render(request, 'shorten.html', {'url':details['new']})
         
         try:
             ret = http.request('GET',url)
