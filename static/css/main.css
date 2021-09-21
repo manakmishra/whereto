@@ -30,6 +30,10 @@ body {
 	text-align: center;
 }
 
+.navbar a {
+	text-decoration: none;
+}
+
 .navbar h1 {
 	font-family: 'Pacifico', 'san-serif';
 	font-size: 6.4rem;

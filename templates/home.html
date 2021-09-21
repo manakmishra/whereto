@@ -7,6 +7,10 @@
   <title>where.to</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="{% static 'css/main.css' %}" type="text/css">
+  <link rel="apple-touch-icon" sizes="180x180" href="{% static 'assets/apple-touch-icon.png' %}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{% static 'assets/favicon-32x32.png' %}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{% static 'assets/favicon-16x16.png' %}">
+  <link rel="manifest" href="{% static '/site.webmanifest' %}">
 </head>
 
 <body>
@@ -15,7 +19,7 @@
   </a>
 
   <div class="navbar">
-    <h1>where<span>.to</span></h1>
+    <a href="/"><h1>where<span>.to</span></h1></a>
   </div>
   <div class="content">
     <h2>Shorten those boring long URLs!</h2>
