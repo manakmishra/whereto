@@ -4,7 +4,7 @@ function copyToClipboard() {
     element.setSelectionRange(0, 99999);
     
     navigator.clipboard.writeText(element.value).then(function() {
-      //Successfullt copied
+      //Successfully copied
     }, function() {
       //fallback using deprecated execCommand API
       document.execCommand("copy");
